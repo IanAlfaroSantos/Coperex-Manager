@@ -160,8 +160,6 @@ export const deleteClient = async (req, res = response) => {
 
         const { id } = req.params;
         
-        const authenticatedClient = req.client;
-
         const client = await Client.findById(id);
 
         if (client.estado === false) {
@@ -190,8 +188,7 @@ export const deleteClient = async (req, res = response) => {
         res.status(200).json({
             success: true,
             message: "Client deleted successfully",
-            deleteClient,
-            authenticatedClient
+            deleteClient
         });
         
     } catch (error) {
