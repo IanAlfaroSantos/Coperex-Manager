@@ -6,6 +6,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { dbConnection } from "./mongo.js";
 import limiter from '../src/middlewares/validar-cant-peticiones.js';
+import { createAdmin } from "../src/admin/admin.controller.js";
+import adminRoutes from "../src/admin/admin.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }))
@@ -17,13 +19,14 @@ const middlewares = (app) => {
 }
 
 const routes = (app) => {
-
+    app.use('/coperexManager/v1/admin', adminRoutes)
 }
 
 const conectarDB = async () => {
     try {
         await dbConnection();
         console.log('¡¡Conexión a la base de datos exitosa!!');
+        await createAdmin();
     } catch (error) {
         console.error('Error al conectar a la base de datos:', error.message);
         process.exit(1);
