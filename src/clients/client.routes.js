@@ -17,3 +17,5 @@ router.post(
     ],
     saveClient
 );
+
+export default router;
