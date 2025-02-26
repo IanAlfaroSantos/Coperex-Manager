@@ -1,0 +1,126 @@
+[{
+  "_id": {
+    "$oid": "67bf1a05f7f7b6594ec0dbf0"
+  },
+  "name": "Claro",
+  "phone": "44786838",
+  "address": "Zona 1",
+  "impactLevel": "alto",
+  "yearExperience": 5,
+  "category": "redes",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:41:25.501Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:41:25.501Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf1a57f7f7b6594ec0dbf7"
+  },
+  "name": "Tigo",
+  "phone": "34783494",
+  "address": "Zona 2",
+  "impactLevel": "alto",
+  "yearExperience": 10,
+  "category": "redes",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:42:47.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:42:47.391Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf1aaff7f7b6594ec0dbfb"
+  },
+  "name": "BDG S.A",
+  "phone": "18987675",
+  "address": "Zona 13",
+  "impactLevel": "bajo",
+  "yearExperience": 14,
+  "category": "tecnologia",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:44:15.921Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:44:15.921Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf1ae7f7f7b6594ec0dbff"
+  },
+  "name": "Vox Dataconm",
+  "phone": "59875762",
+  "address": "Zona 08",
+  "impactLevel": "medio",
+  "yearExperience": 3,
+  "category": "tecnologia",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:45:11.214Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:45:11.214Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf1b13f7f7b6594ec0dc03"
+  },
+  "name": "Sarita",
+  "phone": "66372632",
+  "address": "Zona 1",
+  "impactLevel": "medio",
+  "yearExperience": 3,
+  "category": "comercial",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:45:55.127Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:45:55.127Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf1b7ff7f7b6594ec0dc07"
+  },
+  "name": "Ina",
+  "phone": "87897232",
+  "address": "Zona 19",
+  "impactLevel": "Alto",
+  "yearExperience": 5,
+  "category": "Comercial",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:47:43.047Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T16:14:59.578Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf625d1ac327b5f9b7bfa6"
+  },
+  "name": "Kerns",
+  "phone": "13243279",
+  "address": "Zona 06",
+  "impactLevel": "medio",
+  "yearExperience": 10,
+  "category": "comercial",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T18:50:05.524Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T18:50:05.524Z"
+  }
+}]

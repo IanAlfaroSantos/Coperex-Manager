@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "e2c6fb48-a41d-4295-9f7c-07ca857d9f8b",
+		"name": "Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41997069"
+	},
+	"item": [
+		{
+			"name": "Login Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"username\": \"Administrador\",\r\n    \"password\": \"Admin100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/admin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

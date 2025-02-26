@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "67bf1791f89ce110e1b71e90"
+  },
+  "name": "Kevin",
+  "surname": "Gutierrez",
+  "email": "kgutierrez@gmail.com",
+  "phone": "21363283",
+  "address": "Zona 21",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:30:57.328Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:30:57.328Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf17b6f89ce110e1b71e94"
+  },
+  "name": "Pablo",
+  "surname": "Castillo",
+  "email": "pablo10@gmail.com",
+  "phone": "98382832",
+  "address": "Zona 07",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:31:34.364Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:31:34.364Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf17ddf89ce110e1b71e98"
+  },
+  "name": "Luis",
+  "surname": "Cuxun",
+  "email": "cuxun@gmail.com",
+  "phone": "32328732",
+  "address": "Zona 04",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-02-26T13:32:13.105Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:32:13.105Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bf17e5f89ce110e1b71e9c"
+  },
+  "name": "Kevi",
+  "surname": "Gutierre",
+  "email": "a@gmail.com",
+  "phone": "21363280",
+  "address": "Zona 18",
+  "estado": false,
+  "createdAt": {
+    "$date": "2025-02-26T13:32:21.684Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-26T13:33:53.794Z"
+  }
+}]

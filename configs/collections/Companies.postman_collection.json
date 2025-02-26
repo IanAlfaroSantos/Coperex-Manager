@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "264f2fa1-16c9-4f73-80f0-ec905d194b9c",
+		"name": "Companies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41997069"
+	},
+	"item": [
+		{
+			"name": "Add Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1OTM3NTUsImV4cCI6MTc0MDU5NzM1NX0.5NlcF49y8jr5TFy16lVO3tt7HhNDJ-zn5hUBye9irjQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Kerns\",\r\n    \"phone\": \"13243279\",\r\n    \"address\": \"Zona 06\",\r\n    \"impactLevel\": \"Medio\",\r\n    \"yearExperience\": 10,\r\n    \"category\": \"Comercial\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Company",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1ODUzNTgsImV4cCI6MTc0MDU4ODk1OH0.BoC3bGjdzIq7bIGEmI0CAGWzoaczkdALZgNRnOX1gcE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies?limite=10&desde=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "limite",
+							"value": "10"
+						},
+						{
+							"key": "desde",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Company By Year Experience",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1ODUzNTgsImV4cCI6MTc0MDU4ODk1OH0.BoC3bGjdzIq7bIGEmI0CAGWzoaczkdALZgNRnOX1gcE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies?yearExperience=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "yearExperience",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Company By Category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1ODUzNTgsImV4cCI6MTc0MDU4ODk1OH0.BoC3bGjdzIq7bIGEmI0CAGWzoaczkdALZgNRnOX1gcE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies?category=REDES",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "REDES"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Company A-Z",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1ODUzNTgsImV4cCI6MTc0MDU4ODk1OH0.BoC3bGjdzIq7bIGEmI0CAGWzoaczkdALZgNRnOX1gcE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies?order=A-Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "A-Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Company Z-A",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1ODUzNTgsImV4cCI6MTc0MDU4ODk1OH0.BoC3bGjdzIq7bIGEmI0CAGWzoaczkdALZgNRnOX1gcE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies?order=Z-A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "Z-A"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Company",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1ODUzNTgsImV4cCI6MTc0MDU4ODk1OH0.BoC3bGjdzIq7bIGEmI0CAGWzoaczkdALZgNRnOX1gcE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Ina\",\r\n    \"phone\": \"87897232\",\r\n    \"address\": \"Zona 19\",\r\n    \"impactLevel\": \"Alto\",\r\n    \"yearExperience\": 5,\r\n    \"category\": \"Comercial\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies/67bf1b7ff7f7b6594ec0dc07",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies",
+						"67bf1b7ff7f7b6594ec0dc07"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Report Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1OTM3NTUsImV4cCI6MTc0MDU5NzM1NX0.5NlcF49y8jr5TFy16lVO3tt7HhNDJ-zn5hUBye9irjQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/companies/generateReport",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"companies",
+						"generateReport"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

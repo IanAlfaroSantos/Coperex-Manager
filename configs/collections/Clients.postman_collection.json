@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "b263b296-2466-440c-9747-8dede5a933eb",
+		"name": "Clients",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41997069"
+	},
+	"item": [
+		{
+			"name": "Add Client",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1NzY2MzUsImV4cCI6MTc0MDU4MDIzNX0.9sGkL-uEpkgyT_8VCOkkZf3znKZM8nMQEsxd-9zMc44",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Luis\",\r\n    \"surname\": \"Cuxun\",\r\n    \"email\": \"a@gmail.com\",\r\n    \"phone\": \"32328732\",\r\n    \"address\": \"Zona 04\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Clients",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1ODA2MDMsImV4cCI6MTc0MDU4NDIwM30.Z0Crib1H1Y3Zi2pfSTQSBCeoV4PRVEdYRsyf_0gCyLc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/clients?limite=10&desde=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "limite",
+							"value": "10"
+						},
+						{
+							"key": "desde",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Client",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1NzY2MzUsImV4cCI6MTc0MDU4MDIzNX0.9sGkL-uEpkgyT_8VCOkkZf3znKZM8nMQEsxd-9zMc44",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/clients/67bf17e5f89ce110e1b71e9c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"clients",
+						"67bf17e5f89ce110e1b71e9c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Client",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1NzY2MzUsImV4cCI6MTc0MDU4MDIzNX0.9sGkL-uEpkgyT_8VCOkkZf3znKZM8nMQEsxd-9zMc44",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Kevi\",\r\n    \"surname\": \"Gutierre\",\r\n    \"email\": \"kgutierrez@gmail.com\",\r\n    \"phone\": \"21363280\",\r\n    \"address\": \"Zona 18\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/clients/67bf17e5f89ce110e1b71e9c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"clients",
+						"67bf17e5f89ce110e1b71e9c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Client",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmMTY5MDZlNzE0MzVjNzkwZGNiMjQiLCJpYXQiOjE3NDA1NzY2MzUsImV4cCI6MTc0MDU4MDIzNX0.9sGkL-uEpkgyT_8VCOkkZf3znKZM8nMQEsxd-9zMc44",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/coperexManager/v1/clients/67bf17e5f89ce110e1b71e9c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperexManager",
+						"v1",
+						"clients",
+						"67bf17e5f89ce110e1b71e9c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
