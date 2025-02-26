@@ -7,7 +7,15 @@ export const login = async (req, res) => {
     const { email, password, username } = req.body;
 
     try {
-        const admin = await Admin.findOne({ email, username });
+        const lowerEmail = email ? email.toLowerCase() : null;
+        const lowerUsername = username ? username.toLowerCase() : null;
+
+        const admin = await Admin.findOne({
+            $or: [
+                { email: lowerEmail },
+                { username: lowerUsername }
+            ]
+        });
 
         if (!admin) {
             return res.status(404).json({
