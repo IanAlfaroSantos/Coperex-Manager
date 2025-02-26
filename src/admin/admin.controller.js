@@ -59,7 +59,7 @@ export const createAdmin = async () => {
                 email: "admin@gmail.com",
                 phone: "45398274",
                 password: encryptedPassword,
-                role: role
+                role: "ADMIN"
             });
 
             await admin.save();
