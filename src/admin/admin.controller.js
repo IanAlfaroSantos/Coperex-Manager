@@ -33,7 +33,7 @@ export const login = async (req, res) => {
             });
         }
 
-        const token = generateJWT(admin.id);
+        const token = await generateJWT(admin.id);
 
         res.status(200).json({
             success: true,
