@@ -193,9 +193,9 @@ export const updateCompany = async (req, res = response) => {
     }
 }
 
+const path = require('path');
 export const generateReport = async (req, res) => {
     try {
-        const path = require('path');
 
         if (req.admin.role !== "ADMIN") {
             return res.status(400).json({
