@@ -48,7 +48,7 @@ export const saveCompany = async (req, res) => {
 export const getCompanies = async (req = request, res = response) => {
     try {
 
-        const [ limite = 10, desde = 0, yearExperience, category, order] = req.query;
+        const [ limite = 10, desde = 0, yearExperience, category] = req.query;
         const query = { estado: true };
 
         if (yearExperience) {
@@ -58,16 +58,6 @@ export const getCompanies = async (req = request, res = response) => {
         if (category) {
             query.category = category;
         }
-
-        let sort = {};
-        if (order === "A-Z") {
-            sort.name = 1;
-        } else if (order === "Z-A") {
-            sort.name = -1;
-        } else {
-            sort.name = 1;
-        }
-
 
         if (req.admin.role !== "ADMIN") {
             return res.status(400).json({
