@@ -233,13 +233,15 @@ export const generateReport = async (req, res) => {
             });
         });
 
-        const buffer = await workbook.xlsx.writeBuffer();
+        const filePath = path.join(__dirname, 'Report_Companies.xlsx');
+        await workbook.xlsx.writeFile(filePath);
 
-        res.setHeader('Content-Disposition', 'attachment; filename="Report_Companies.xlsx"');
-        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        res.send(buffer);
+        res.status(200).json({
+            success: true,
+            message: "Report generated successfully. You can download it from the server."
+        });
 
-        console.log("Buffer length:", buffer.length);
+        console.log("File saved at:", filePath);
     
     } catch (error) {
         console.log(error);
@@ -249,4 +251,3 @@ export const generateReport = async (req, res) => {
         });
     }
 };
-
