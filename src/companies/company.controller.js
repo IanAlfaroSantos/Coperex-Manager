@@ -79,8 +79,8 @@ export const getCompanies = async (req = request, res = response) => {
             Company.countDocuments(query),
             Company.find(query)
             .sort(sort)
-            .skip(desde)
-            .limit(limite)
+            .skip(Number(desde))
+            .limit(Number(limite))
         ])
 
         res.status(200).json({
