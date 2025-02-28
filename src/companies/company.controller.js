@@ -75,7 +75,7 @@ export const getCompanies = async (req = request, res = response) => {
             });
         }
 
-        const companies = await Promise.all([
+        const [total, companies] = await Promise.all([
             Company.countDocuments(query),
             Company.find(query)
             .sort(sort)
@@ -168,8 +168,8 @@ export const updateCompany = async (req, res = response) => {
             });
         }
 
-        const verifyImpactLevel = ["bajo", "medio", "alto"].toLowerCase();
-        if (!verifyImpactLevel.includes(data.impactLevel.toLowerCase())) {
+        const verifyImpactLevel = ["bajo", "medio", "alto"];
+        if (!data.impactLevel || !verifyImpactLevel.includes(data.impactLevel.toLowerCase())) {
             return res.status(400).json({
                 success: false,
                 message: "Invalid impact level. Accepted values are: Bajo, Medio o Alto"
