@@ -52,7 +52,7 @@ export const getCompanies = async (req = request, res = response) => {
         const query = { estado: true };
 
         if (yearExperience) {
-            query.yearExperience = yearExperience;
+            query.yearExperience = Number(yearExperience);
         }
 
         if (category) {
