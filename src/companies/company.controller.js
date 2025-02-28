@@ -194,6 +194,11 @@ export const updateCompany = async (req, res = response) => {
     }
 }
 
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 export const generateReport = async (req, res) => {
     try {
         if (req.admin.role !== "ADMIN") {
@@ -234,7 +239,7 @@ export const generateReport = async (req, res) => {
             });
         });
 
-        const filePath = path.join(__dirname, 'Report_Companies.xlsx');
+        const filePath = `${__dirname}/Report_Companies.xlsx`;
         await workbook.xlsx.writeFile(filePath);
 
         res.status(200).json({
