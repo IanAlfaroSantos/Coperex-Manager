@@ -4,6 +4,7 @@ import ExcelJS from "exceljs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import fs from "fs";
 
 export const saveCompany = async (req, res) => {
     try {
@@ -241,12 +242,15 @@ export const generateReport = async (req, res) => {
         });
 
         const savePath = path.join(__dirname, 'Reports', 'Report Companies.xlsx');
+        if (fs.existsSync(savePath)) {
+            fs.unlinkSync(savePath);
+        }
 
         await workbook.xlsx.writeFile(savePath);
 
         res.status(200).json({
             success: true,
-            message: 'Report generated successfully in /Coperex-Manager/Reports/Report Companies.xlsx!',
+            message: '¡¡Report generated successfully!!',
             filePath: savePath
         });
 
