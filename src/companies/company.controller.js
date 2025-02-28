@@ -197,10 +197,10 @@ export const updateCompany = async (req, res = response) => {
 
 export const generateReport = async (req, res) => {
     try {
-        if (req.admin.role !== 'ADMIN') {
+        if (req.admin.role !== "ADMIN") {
             return res.status(400).json({
                 success: false,
-                message: 'You do not have permissions to generate a report'
+                message: "You do not have permissions to generate a report"
             });
         }
 
@@ -222,7 +222,7 @@ export const generateReport = async (req, res) => {
             { header: 'Estado', key: 'estado', width: 50 },
         ];
 
-        companies.forEach((company) => {
+        companies.forEach(company => {
             worksheet.addRow({
                 _id: company._id,
                 name: company.name,
@@ -235,38 +235,26 @@ export const generateReport = async (req, res) => {
             });
         });
 
-        // Guardamos el archivo Excel en el servidor de forma temporal
-        const filePath = path.join(__dirname, 'Report_Companies.xlsx');
-        await workbook.xlsx.writeFile(filePath);
+        const savePath = path.join(__dirname, 'Reports', 'Report Companies.xlsx');
 
-        // Establecemos los encabezados correctos para que Postman reconozca el archivo
-        res.setHeader('Content-Disposition', 'attachment; filename=Report_Companies.xlsx');
-        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        const dir = path.dirname(savePath);
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
 
-        // Enviamos el archivo para su descarga
-        res.download(filePath, (err) => {
-            if (err) {
-                console.log("Error al enviar el archivo:", err);
-                res.status(500).json({
-                    success: false,
-                    message: "Error al enviar el archivo"
-                });
-            } else {
-                console.log("Archivo enviado correctamente");
-                // Opcional: Eliminar el archivo temporal después de enviarlo
-                fs.unlink(filePath, (unlinkErr) => {
-                    if (unlinkErr) {
-                        console.log("Error al eliminar el archivo temporal:", unlinkErr);
-                    }
-                });
-            }
+        await workbook.xlsx.writeFile(savePath);
+
+        res.status(200).json({
+            success: true,
+            message: 'Report generated successfully in /Coperex-Manager/Reports/Report Companies.xlsx!',
+            filePath: savePath
         });
 
     } catch (error) {
         console.log(error);
         res.status(500).json({
             success: false,
-            message: 'Error generating the report'
+            message: "Error generating the report"
         });
     }
 };
