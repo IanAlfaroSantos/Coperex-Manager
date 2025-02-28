@@ -1,7 +1,6 @@
 import Company from "./company.model.js";
 import { request, response } from "express";
 import ExcelJS from "exceljs";
-import path from "path";
 
 export const saveCompany = async (req, res) => {
     try {
@@ -208,20 +207,20 @@ export const generateReport = async (req, res) => {
         const companies = [...activeCompanies, ...inactiveCompanies];
 
         const workbook = new ExcelJS.Workbook();
-        const worksheet = workbook.addWorksheet('Report Companies');
+        const worksheet = workbook.addWorksheet("Report Companies");
 
         worksheet.columns = [
-            { header: 'ID', key: '_id', width: 50 },
-            { header: 'Name', key: 'name', width: 50 },
-            { header: 'Phone', key: 'phone', width: 50 },
-            { header: 'Address', key: 'address', width: 50 },
-            { header: 'Impact Level', key: 'impactLevel', width: 50 },
-            { header: 'Year Of Experience', key: 'yearExperience', width: 50 },
-            { header: 'Category', key: 'category', width: 50 },
-            { header: 'Estado', key: 'estado', width: 50 },
+            { header: "ID", key: "_id", width: 50 },
+            { header: "Name", key: "name", width: 50 },
+            { header: "Phone", key: "phone", width: 50 },
+            { header: "Address", key: "address", width: 50 },
+            { header: "Impact Level", key: "impactLevel", width: 50 },
+            { header: "Year Of Experience", key: "yearExperience", width: 50 },
+            { header: "Category", key: "category", width: 50 },
+            { header: "Estado", key: "estado", width: 50 },
         ];
 
-        companies.forEach(company => {
+        companies.forEach((company) => {
             worksheet.addRow({
                 _id: company._id,
                 name: company.name,
@@ -230,22 +229,26 @@ export const generateReport = async (req, res) => {
                 impactLevel: company.impactLevel,
                 yearExperience: company.yearExperience,
                 category: company.category,
-                estado: company.estado ? 'Active' : 'Inactive',
+                estado: company.estado ? "Active" : "Inactive",
             });
         });
 
-        const buffer = await workbook.xlsx.writeBuffer();
+        res.setHeader(
+            "Content-Type",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+        res.setHeader(
+            "Content-Disposition",
+            "attachment; filename=Report_Companies.xlsx"
+        );
 
-        res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        res.setHeader("Content-Disposition", "attachment; filename=Report_Companies.xlsx");
-
-        res.send(buffer);
-
+        await workbook.xlsx.write(res);
+        res.end();
     } catch (error) {
         console.log(error);
         res.status(500).json({
             success: false,
-            message: "Error generating the report"
+            message: "Error generating the report",
         });
     }
 };
