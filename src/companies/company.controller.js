@@ -1,6 +1,8 @@
 import Company from "./company.model.js";
 import { request, response } from "express";
 import ExcelJS from "exceljs";
+import path from "path";
+import fs from "fs";
 
 export const saveCompany = async (req, res) => {
     try {
@@ -233,17 +235,22 @@ export const generateReport = async (req, res) => {
             });
         });
 
-        res.setHeader(
-            "Content-Type",
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        );
-        res.setHeader(
-            "Content-Disposition",
-            "attachment; filename=Report_Companies.xlsx"
-        );
+        const filePath = path.join(process.cwd(), "Report_Companies.xlsx");
+        
+        await workbook.xlsx.writeFile(filePath);
 
-        await workbook.xlsx.write(res);
-        res.end();
+        res.download(filePath, "Report_Companies.xlsx", (err) => {
+            if (err) {
+                console.log("Error al descargar el archivo:", err);
+                res.status(500).json({
+                    success: false,
+                    message: "Error al descargar el reporte",
+                });
+            } else {
+                fs.unlinkSync(filePath);
+            }
+        });
+        
     } catch (error) {
         console.log(error);
         res.status(500).json({
