@@ -79,7 +79,6 @@ export const getCompanies = async (req = request, res = response) => {
         const [total, companies] = await Promise.all([
             Company.countDocuments(query),
             Company.find(query)
-            .sort(sort)
             .skip(Number(desde))
             .limit(Number(limite))
         ])
