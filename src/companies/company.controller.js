@@ -239,12 +239,6 @@ export const generateReport = async (req, res) => {
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.setHeader('Content-Disposition', 'attachment; filename=Report_Companies.xlsx');
         res.send(buffer);
-                
-        await book.xlsx.write(res);
-        
-        res.end();
-
-        return;
     
     } catch (error) {
         console.log(error);
