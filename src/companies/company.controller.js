@@ -197,10 +197,10 @@ export const updateCompany = async (req, res = response) => {
 
 export const generateReport = async (req, res) => {
     try {
-        if (req.admin.role !== "ADMIN") {
+        if (req.admin.role !== 'ADMIN') {
             return res.status(400).json({
                 success: false,
-                message: "You do not have permissions to generate a report"
+                message: 'You do not have permissions to generate a report'
             });
         }
 
@@ -209,17 +209,17 @@ export const generateReport = async (req, res) => {
         const companies = [...activeCompanies, ...inactiveCompanies];
 
         const workbook = new ExcelJS.Workbook();
-        const worksheet = workbook.addWorksheet("Report Companies");
+        const worksheet = workbook.addWorksheet('Report Companies');
 
         worksheet.columns = [
-            { header: "ID", key: "_id", width: 50 },
-            { header: "Name", key: "name", width: 50 },
-            { header: "Phone", key: "phone", width: 50 },
-            { header: "Address", key: "address", width: 50 },
-            { header: "Impact Level", key: "impactLevel", width: 50 },
-            { header: "Year Of Experience", key: "yearExperience", width: 50 },
-            { header: "Category", key: "category", width: 50 },
-            { header: "Estado", key: "estado", width: 50 },
+            { header: 'ID', key: '_id', width: 50 },
+            { header: 'Name', key: 'name', width: 50 },
+            { header: 'Phone', key: 'phone', width: 50 },
+            { header: 'Address', key: 'address', width: 50 },
+            { header: 'Impact Level', key: 'impactLevel', width: 50 },
+            { header: 'Year Of Experience', key: 'yearExperience', width: 50 },
+            { header: 'Category', key: 'category', width: 50 },
+            { header: 'Estado', key: 'estado', width: 50 },
         ];
 
         companies.forEach((company) => {
@@ -231,31 +231,42 @@ export const generateReport = async (req, res) => {
                 impactLevel: company.impactLevel,
                 yearExperience: company.yearExperience,
                 category: company.category,
-                estado: company.estado ? "Active" : "Inactive",
+                estado: company.estado ? 'Active' : 'Inactive',
             });
         });
 
-        const filePath = path.join(process.cwd(), "Report_Companies.xlsx");
-        
+        // Guardamos el archivo Excel en el servidor de forma temporal
+        const filePath = path.join(__dirname, 'Report_Companies.xlsx');
         await workbook.xlsx.writeFile(filePath);
 
-        res.download(filePath, "Report_Companies.xlsx", (err) => {
+        // Establecemos los encabezados correctos para que Postman reconozca el archivo
+        res.setHeader('Content-Disposition', 'attachment; filename=Report_Companies.xlsx');
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        // Enviamos el archivo para su descarga
+        res.download(filePath, (err) => {
             if (err) {
-                console.log("Error al descargar el archivo:", err);
+                console.log("Error al enviar el archivo:", err);
                 res.status(500).json({
                     success: false,
-                    message: "Error al descargar el reporte",
+                    message: "Error al enviar el archivo"
                 });
             } else {
-                fs.unlinkSync(filePath);
+                console.log("Archivo enviado correctamente");
+                // Opcional: Eliminar el archivo temporal después de enviarlo
+                fs.unlink(filePath, (unlinkErr) => {
+                    if (unlinkErr) {
+                        console.log("Error al eliminar el archivo temporal:", unlinkErr);
+                    }
+                });
             }
         });
-        
+
     } catch (error) {
         console.log(error);
         res.status(500).json({
             success: false,
-            message: "Error generating the report",
+            message: 'Error generating the report'
         });
     }
 };

@@ -47,7 +47,7 @@ router.put(
     updateCompany
 );
 
-router.post(
+router.get(
     '/generateReport',
     validarJWT,
     generateReport
