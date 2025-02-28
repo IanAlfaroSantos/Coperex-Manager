@@ -51,8 +51,8 @@ export const getClients = async (req = request, res = response) => {
         const [total, clients] = await Promise.all([
             Client.countDocuments(query),
             Client.find(query)
-            .skip(desde)
-            .limit(parseInt(limite))
+            .skip(Number(desde))
+            .limit(Number(limite))
         ]);
 
         res.status(200).json({
