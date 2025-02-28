@@ -193,10 +193,6 @@ export const updateCompany = async (req, res = response) => {
     }
 }
 
-import ExcelJS from "exceljs";
-import Company from "./company.model.js";
-import { request, response } from "express";
-
 export const generateReport = async (req, res) => {
     try {
         if (req.admin.role !== "ADMIN") {
