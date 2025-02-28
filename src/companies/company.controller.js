@@ -1,8 +1,6 @@
 import Company from "./company.model.js";
 import { request, response } from "express";
 import ExcelJS from "exceljs";
-import path from "path";
-import fs from "fs";
 
 export const saveCompany = async (req, res) => {
     try {
@@ -197,6 +195,8 @@ export const updateCompany = async (req, res = response) => {
 
 export const generateReport = async (req, res) => {
     try {
+        const path = require('path');
+
         if (req.admin.role !== "ADMIN") {
             return res.status(400).json({
                 success: false,
@@ -236,11 +236,6 @@ export const generateReport = async (req, res) => {
         });
 
         const savePath = path.join(__dirname, 'Reports', 'Report Companies.xlsx');
-
-        const dir = path.dirname(savePath);
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-        }
 
         await workbook.xlsx.writeFile(savePath);
 
