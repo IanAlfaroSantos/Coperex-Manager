@@ -60,9 +60,9 @@ export const getCompanies = async (req = request, res = response) => {
         }
 
         let sort = {};
-        if (order === "A-Z" || "a-z" || "A-z" || "a-Z") {
+        if (order === "A-Z") {
             sort.name = 1;
-        } else if (order === "Z-A" || "z-a" || "Z-a" || "z-A") {
+        } else if (order === "Z-A") {
             sort.name = -1;
         } else {
             sort.name = 1;
