@@ -242,8 +242,15 @@ export const generateReport = async (req, res) => {
         });
 
         const savePath = path.join(__dirname, 'Reports', 'Report Companies.xlsx');
-        if (fs.existsSync(savePath)) {
-            fs.unlinkSync(savePath);
+        try {
+            if (fs.existsSync(savePath)) {
+                fs.unlinkSync(savePath);
+            }
+        } catch (err) {
+            return res.status(500).json({
+                success: false,
+                message: "Error update the file, please close the file to update it"
+            });
         }
 
         await workbook.xlsx.writeFile(savePath);
