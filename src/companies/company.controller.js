@@ -1,6 +1,8 @@
 import Company from "./company.model.js";
 import { request, response } from "express";
 import ExcelJS from "exceljs";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 export const saveCompany = async (req, res) => {
     try {
@@ -193,9 +195,11 @@ export const updateCompany = async (req, res = response) => {
     }
 }
 
-const path = require('path');
 export const generateReport = async (req, res) => {
     try {
+
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
 
         if (req.admin.role !== "ADMIN") {
             return res.status(400).json({
