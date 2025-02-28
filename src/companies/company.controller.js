@@ -28,7 +28,7 @@ export const saveCompany = async (req, res) => {
             address: data.address,
             impactLevel: data.impactLevel.toLowerCase(),
             yearExperience: data.yearExperience,
-            category: data.category
+            category: data.category.toLowerCase()
         });
 
         res.status(200).json({

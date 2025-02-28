@@ -24,7 +24,8 @@ export const CompanySchema = Schema({
     },
     category: {
         type: String,
-        required: [true, "The category is required"]
+        required: [true, "The category is required"],
+        toLowerCase: true
     },
     estado: {
         type: Boolean,
