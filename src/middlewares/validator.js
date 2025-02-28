@@ -20,7 +20,7 @@ export const validatorCompany = [
     body('name', 'The name is required').not().isEmpty(),
     body('name').custom(existenteNameCompany),
     body('impactLevel', 'The impact level is required').not().isEmpty(),
-    body('yearLevel', 'The year of experience is required').not().isEmpty(),
+    body('yearExperience', 'The year of experience is required').not().isEmpty(),
     body('category', 'The category is required').not().isEmpty(),
     validarCampos
 ]
