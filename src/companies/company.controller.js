@@ -69,7 +69,7 @@ export const getCompanies = async (req = request, res = response) => {
         }
 
 
-        if (req.admin.role!== "ADMIN") {
+        if (req.admin.role !== "ADMIN") {
             return res.status(400).json({
                 success: false,
                 message: "You do not have permissions to get companies"
