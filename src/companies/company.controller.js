@@ -86,6 +86,7 @@ export const getCompanies = async (req = request, res = response) => {
         });
         
     } catch (error) {
+        console.log(error);
         res.status(500).json({
             success: false,
             message: "Error getting companies"
