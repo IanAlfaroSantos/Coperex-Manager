@@ -56,7 +56,7 @@ export const getCompanies = async (req = request, res = response) => {
         }
 
         if (category) {
-            query.category = category;
+            query.category = category.toLowerCase();
         }
 
         let sort = {};
