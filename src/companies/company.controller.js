@@ -64,6 +64,10 @@ export const getCompanies = async (req = request, res = response) => {
             sort.name = order === "A-Z" ? 1 : -1;
         }
 
+        if (!order) {
+            sort = { name: 1 };
+        }
+
         if (req.admin.role!== "ADMIN") {
             return res.status(400).json({
                 success: false,
