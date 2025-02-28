@@ -193,6 +193,10 @@ export const updateCompany = async (req, res = response) => {
     }
 }
 
+import ExcelJS from "exceljs";
+import Company from "./company.model.js";
+import { request, response } from "express";
+
 export const generateReport = async (req, res) => {
     try {
         if (req.admin.role !== "ADMIN") {
@@ -204,13 +208,12 @@ export const generateReport = async (req, res) => {
 
         const activeCompanies = await Company.find({ estado: true });
         const inactiveCompanies = await Company.find({ estado: false });
-
         const companies = [...activeCompanies, ...inactiveCompanies];
 
-        const book = new ExcelJS.Workbook();
-        const sheet = book.addWorksheet('Report Companies');
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Report Companies');
 
-        sheet.columns = [
+        worksheet.columns = [
             { header: 'ID', key: '_id', width: 50 },
             { header: 'Name', key: 'name', width: 50 },
             { header: 'Phone', key: 'phone', width: 50 },
@@ -222,7 +225,7 @@ export const generateReport = async (req, res) => {
         ];
 
         companies.forEach(company => {
-            sheet.addRow({
+            worksheet.addRow({
                 _id: company._id,
                 name: company.name,
                 phone: company.phone,
@@ -234,7 +237,8 @@ export const generateReport = async (req, res) => {
             });
         });
 
-        const buffer = await book.xlsx.writeBuffer();
+        const buffer = await workbook.xlsx.writeBuffer();
+
         res.setHeader('Content-Disposition', 'attachment; filename="Report_Companies.xlsx"');
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.send(buffer);
@@ -249,3 +253,4 @@ export const generateReport = async (req, res) => {
         });
     }
 };
+
