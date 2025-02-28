@@ -6,6 +6,13 @@ export const saveClient = async (req, res) => {
 
         const data = req.body;
 
+        if (req.admin.role !== "ADMIN") {
+            res.status(400).json({
+                success: false,
+                message: "You do not have permissions to save clients"
+            });
+        }
+        
         const client = await Client.create({
             name: data.name,
             surname: data.surname,
@@ -13,13 +20,6 @@ export const saveClient = async (req, res) => {
             phone: data.phone,
             address: data.address
         });
-
-        if (req.admin.role !== "ADMIN") {
-            res.status(400).json({
-                success: false,
-                message: "You do not have permissions to save clients"
-            });
-        }
 
         res.status(200).json({
             success: true,
