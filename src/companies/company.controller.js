@@ -234,11 +234,11 @@ export const generateReport = async (req, res) => {
             });
         });
 
+        const buffer = await book.xlsx.writeBuffer();
         res.setHeader('Content-Disposition', 'attachment; filename="Report_Companies.xlsx"');
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.send(Buffer.from(buffer));
 
-        const buffer = await book.xlsx.writeBuffer();
         console.log("Buffer length:", buffer.length);
     
     } catch (error) {
