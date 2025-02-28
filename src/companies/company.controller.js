@@ -194,11 +194,6 @@ export const updateCompany = async (req, res = response) => {
     }
 }
 
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 export const generateReport = async (req, res) => {
     try {
         if (req.admin.role !== "ADMIN") {
@@ -239,16 +234,13 @@ export const generateReport = async (req, res) => {
             });
         });
 
-        const filePath = `${__dirname}/Report_Companies.xlsx`;
-        await workbook.xlsx.writeFile(filePath);
+        const buffer = await workbook.xlsx.writeBuffer();
 
-        res.status(200).json({
-            success: true,
-            message: "Report generated successfully. You can download it from the server."
-        });
+        res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        res.setHeader("Content-Disposition", "attachment; filename=Report_Companies.xlsx");
 
-        console.log("File saved at:", filePath);
-    
+        res.send(buffer);
+
     } catch (error) {
         console.log(error);
         res.status(500).json({
